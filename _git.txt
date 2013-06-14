@@ -1,0 +1,395 @@
+####Git  
+
+# install
+# Mac
+$brew install git 
+# ubuntu family
+$apt-get install git-core git-daemon-run gitweb
+# fefora family
+$yum install git-core
+
+
+
+# in Bash commit message edit setting
+export GIT_EDITOR=vim
+
+# setting
+GIT_AUTHOR_NAME=XX
+GIT_AUTHOR_EMAIL=XX
+git config --unset --global user.email
+
+
+# IGNORE SETTING
+# make .gitignore
+ignore-me-everywhere.txt
+.DS_Store
+# ignore directory
+ignore-dir/
+# wild cards
+*.[oa]
+tmp/**/*
+log/*
+
+# global setting 
+git config --global core.excludesfiles ~/.gitignore
+# or modify
+.git/info/exclude
+
+# and svn ignore settting 
+svn propset svn:ignore .git .
+
+
+
+
+
+##################
+# git commands
+##################
+git init
+git init --bare
+git clone <source repository> <target directory>
+
+# clone specific branch from remote repository
+git clone -b <specific branch> <source> <target>
+or 
+git clone <source> <target>
+git checkout -b <branch> origin(<remote repository>)/<branch>
+
+git status
+# see indexed files
+git ls-files -s 
+git add <filename>
+git add <directory>
+# proejct directory indexing
+git add .
+
+# commit
+git commit -m "" --author="Park Sungho <aaa@mail.com>"
+git commit index.html
+git commit -a -m "commit all modified(indexing and commit at once)"
+
+# show
+git log
+git log -1 --pretty=oneline 534adf
+git log --pretty=short --abbrev-commit --stat master~12..master~10
+git show adf67da6f8dadf5af45a
+git show-branch --more=10
+git diff <old commit id> <new commit id>
+
+# remove
+# delete from index and working directory
+git rm noneed.html
+git rm -f <file>
+# delete from index only
+git rm --cached <file>
+
+# rename
+mv foo.html bar.html
+git rm foo.html
+git add bar.html
+    or 
+git mv foo.html bar.html
+
+# show config
+git config -l
+
+# configure alias
+git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline --decorate'
+
+
+# tag
+git tag -m"Tag Version 1.0" V1.0 3ed354
+
+
+
+# diff
+git diff --cached
+
+# unstage file
+git rm --cached filename
+
+
+# remove index and working copy both
+git rm filename
+
+# to recover from deleted file
+git checkout HEAD -- filename
+
+
+#
+gitk
+
+
+# commit range
+X..Y is mathmatically equivalent to ^X Y (Give me all commits that are reachable from Y, and don't give me any commit leading up to and including X)
+
+
+
+# finding commits
+git bisect start
+# tell git the HEAD is broken
+git bisect bad
+# similarly, tell git which version works
+git bisect good
+...
+git bisect log
+git bisect visualize --pretty=oneline
+# end
+git bisect reset
+
+# using blame - tells who last modified each line of a file and which commit made the change
+git blame -L 35, init/version.c
+
+#using pickaxe -Ssting
+git log -Sinclude --pretty=oneline --abbrev-commit init/version.c
+
+
+
+
+# branch
+# create branch
+git branch <target branch> <source branch>
+ex) git branch prs/pr-1138
+
+# show local branch list
+git branch
+# show local and remote branch list
+git branch -a
+# show local branch history
+git show-branch --more=10
+# show local and remote branch history
+git show-branch -a
+# show partial branches
+git show-branch bug/pr-1 bug/pr-2
+git show-branch bug/*
+
+
+
+# delete branch
+git branch -d <branch>
+
+# after accidently removing a branch or other ref,
+# you can recover it by using 
+git reflog
+git fsck
+# and configuration options like
+gc.reflogExpire
+gc.pruneExpire
+
+
+
+# garbage collector ???
+git gc
+
+
+# create branch and checkout
+git checkout -b <branch>
+# change branch (if uncommited file exists, error occurs)
+git checkout <branch>
+# change branch and merge with uncommited files in working directory
+git checkout -m <another branch>
+# ignore data loss
+git checkout -f <branch>
+
+
+# deleted file recover
+git checkout HEAD -- <file>
+
+
+
+
+# diff
+# unified diff standardized format 
+diff -u <file1> <file2>
+
+# diff working directory and index
+git diff
+# diff working directory and given commit 
+git diff <commit>
+# diff staged changes and given commit 
+git diff --cached <commit>
+git diff --staged <commit>
+# diff two arbitrary commits
+git diff <commit1> <commit2>
+# to get both staged and unstaged changes
+git diff HEAD
+# -S"string" searche
+git diff -S"octopus" master~50
+
+
+# diff options
+# --M (detects renames and generates simplified output)
+# -w or --ignore-all-space (ignore whitespaces)
+# --stat (statistics about two trees)
+git diff --stat master~5 master <directory>
+# --color
+
+
+
+
+
+# merge
+# merge other_branch to branch
+git checkout branch
+git merge other_branch
+
+# show conflicted files
+git ls-files -u
+
+# don't use fast-forward merge (ff = lose branch history)
+git merge --no-ff other_branch
+
+# abort merge before commit (restores working directory and indexed before merge operation)
+git reset --hard HEAD
+# abort or discard the merge after it has finished
+git reset --hard ORIGIN_HEAD
+# return to the original conflict state
+git checkout -m
+
+
+
+
+# commmit
+# changes HEAD ref to point to the given commit, index, working directory unchanged
+git reset --soft <commit>
+# changes HEAD ref to point to the given commit, index changed as if you had just staged all the changes,  working directory unchanged(default)
+git reset --mixed <commit>
+# changes HEAD ref to point to the given commit, index, working directory changed 
+git reset --hard <commit>
+# example1) unstaging
+git reset HEAD foo.c
+# exmaple2) eliminate top-most commit
+git reset HEAD^
+# alter the most recent commit
+git commit --amend
+git commit --amend --author "me me <me@me.com>"
+
+# rebase is used to alter where a sequence of commit is based p.182
+git checkout <branch>
+git rebase <rebased>
+or
+git rebase <rebased> <branch>
+# situation like p.182 is often called 'forward porting' <branch> is forward ported to the <rebased> branch
+
+# resume rebase operation after resolving conflicts
+git rebase --continue
+# abort rebase operation
+git rebase --abort
+
+# reorder, edit, removing, squashing multiple commits, splitting commit
+git rebase -i <to commit>
+
+
+
+
+
+
+# remote repository
+# create bare repository
+git clone --bare <bare repo>
+
+
+
+
+# add remote repository name (add to .git/config)
+git remote add <remote> <remote url>
+# show remote repository list
+git remote -v
+# show remote information
+git remote show <remote>
+# rename remote
+git remote rename <current name> <new name>
+
+# !!! remote branch - local branch for reflect status of repository which resides remote!!!
+# fetch - update remote branch automatically
+# retrieves objects and their related metadata from a remote repository
+git fetch <remote>
+# merge changes into a corresponding branch
+git pull
+# transfers objects and their related metadata to a remote repository
+git push 
+# remove remote and remote branch
+git remote rm <remote>
+# remove remote branch which does not exist in remote repository
+git remote prune <remote>
+# show simbol ref list of repository
+git show-ref
+# show simbol ref list of remote repository
+git ls-remote <remote>
+
+# "depot" - agreed-on authoritative copy repository, remote origin for all developers
+
+# Example
+# creating authoritative repository (last .git part is convention)
+git clone --bare <git repository path> new_repo.git
+cd <git folder>
+git remote add origin <path to remote repository>
+git remote update
+
+
+# repositories with anonymous read access
+# publishing repositories with git-daemon
+# first, create file named "git-daemon-export-ok" in the top-level directory of the bare repository
+
+# add this line to /etc/services
+git 9418/tcp
+
+# add this line to /etc/initd.conf
+git stream tcp nowait nobody /usr/bin/git-daemon
+git-daemon --inetd --verbose --export-all
+--base-path=/pub/git
+
+# or multiple, virtually hostd git-daemon  %H:hostname, %D:directorypath
+git stream tcp nowait nobody /usr/bin/git-daemon
+git-daemon --inetd --verbose --export-all
+--interpolated-path=/pub/%H%D
+
+/pub/git.example.com/software/
+/pub/www.example.org/software/
+
+# will be accessed with 
+git://git.example.com/software/repository.git
+git://www.example.org/software/repository.git
+
+
+# if using xinetd, then /etc/xinetd.d/git-daemon
+
+# description: The git server offers access to git repositories
+service git
+{
+disable = no
+type = UNLISTED
+port = 9418
+socket_type = stream
+wait = no
+user = nobody
+server = /usr/bin/git-daemon
+server_args = --inetd --export-all --base-path=/pub/git
+log_on_failure += USERID
+}
+
+
+# publishing repositories with using HTTP daemon
+# setup gitweb
+
+cd /path/to/bare/repo.git
+mv hooks/post-update.sample hooks/post-update
+chmod 755 hooks/post-update
+# copy the bare repository into a directory served by a HTTP daemon
+
+
+# repositories with anonymous write access (use fo private LAN)
+# when use git-daemon
+[daemon]
+    receivepack = true
+
+
+
+
+
+
+#####
+refresh git after add something to .gitignore
+git rm -cahced <file>
+
+

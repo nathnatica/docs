@@ -1,0 +1,35 @@
+##### NAT port forwarding
+
+1. extract install file
+>VMxxx.exe /e extract_folder
+2. extract network.cab
+3. copy vmnetcfg.exe to VMWare folder
+4. exec vmnetcfg.exe
+5. select VMnet8
+6. select NAT setting
+7. add port forwarding information
+
+
+##### static ip
+1.check vmnetcfg > select VMnet8 > DHCP setting
+
+2.memo dhcp settings
+	ip : 192.168.243.129
+	mask : 255.255.255.0
+	subnet : 192.168.243.0
+	gateway ip : 192.168.243.2
+
+3. vi /etc/network/interfaces
+auto eth0
+iface eth0 inet static
+address 192.168.243.129
+netmask 255.255.255.0
+gateway 192.168.243.2
+
+4. sudo /etc/init.d/networking restart
+
+
+
+
+##### dns
+/etc/resolv.conf

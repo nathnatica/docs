@@ -1,0 +1,10 @@
+Class.forName("com.mysql.jdbc.Driver");
+url = "jdbc:mysql://localhost/testdb";
+
+
+
+create database testdb;
+
+use testdb;
+
+create table user (id INT, name VARHCAR(50));

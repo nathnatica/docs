@@ -1,0 +1,5 @@
+INSIGHT 
+
+tcruntime-instance.bat create insight-instance -t insight
+tcruntime-ctr.bat insight-instance install
+tcruntime-ctr.bat insight-instance start 

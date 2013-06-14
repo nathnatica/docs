@@ -1,0 +1,11 @@
+$cat <file> | awk '($0 ~ /someString/){print}'
+
+
+# replace and overwrite files(line ending should be unix format) 
+$find path/dir -exec sed -i 's/from/to/g' {} \;
+
+
+# convert unix line ending to dos
+sed -e 's/foo/bar/' -e 's/$/\r/'
+
+

@@ -1,0 +1,65 @@
+******************
+SVN SERVER INSTALL 1
+******************
+
+1
+svnadmin.exe create C:\svn-repository
+
+2
+svnserve.conf - delete #
+anon-access = read
+auth-access = write
+password-db = passwd
+
+3
+passwd - add user
+admin=admin
+
+4
+svnserve.exe -d --root C:\svn-repository
+
+
+dont do this causes cliend error
+svn.exe cleanup C:\workspace\test-mvn-front
+
+
+
+
+-------------------------------
+******************
+SVN SERVER INSTALL 2
+******************
+
+1. install svn server
+
+2. make a repository directory
+	C:\repository
+
+3. add to service
+	>sc create svn binPath= "C:\Program Files\Subversion\bin\binserve.exe --service -r C:\repository" DisplayName= "Subversion Server" depend= Tcpip start= auto
+
+cf. delete service
+	>sc delete DisplayName= "Subversion Server"
+
+4. add firewall exception port
+	port : 3690
+
+5. make a repository
+	>"C:\Program Files\Subversion\bin\svnadmin" create --fs-type fsfs <dir name>
+
+
+6. svnserve.conf - delete #
+anon-access = read
+auth-access = write
+password-db = passwd
+
+7
+passwd - add user
+admin=admin
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+system environment setting
+M2_HOME C:\apache-maven-2.2.1
+MAVEN_OPTS  -Xmx1024m -Xdebug -Xnoagent -Djava.compiler=NONE -agentlib:jdwp=transport=dt_socket,address=4000,server=y,suspend=n
+
+
+C:\Documents and Settings\park\.m2\settings.xml
+
+<settings>
+  <proxies>
+   <proxy>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>proxy.nttdata.co.jp</host>
+      <port>8080</port>
+      <username>u554358</username>
+      <password>qkrtjdghek1</password>
+      <nonProxyHosts></nonProxyHosts>
+    </proxy>
+  </proxies>
+</settings>
+
+
+
+mvn install:install-file -DgroupId=org.apache.maven.surefire -DartifactId=surefire-junit4 -Dversion=2.4.3 -Dpackaging=jar -Dfile=/path/to/file
+
+
+mvn -Djetty.port=10000 jetty:run

@@ -1,0 +1,17 @@
+- extract
+
+- make server.properties file in a root direcory (ref sample/server.properties)
+
+    server.database.0=file:hsqldb/testdb
+    server.dbname.0=testdb
+
+>java -classpath=lib/hsqldb.jar org.hsqldb.server.Server
+>java -classpath lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:hsqldb/testdb --dbname.0 testdb
+
+>runManagerSwing.bat
+    Type:   in memory
+    Driver: org.hsqldb.jdbc.JDBCDriver
+    URL:    jdbc:hsqldb:hsql://localhost/testdb
+    User:   SA
+
+ 

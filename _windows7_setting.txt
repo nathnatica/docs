@@ -1,0 +1,3 @@
+> new user administrator /active:yes
+> new user administrator /active:no
+

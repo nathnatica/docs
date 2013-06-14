@@ -1,0 +1,14 @@
+##### tomcat6 log setting
+make logging.properties in /WEB-INF/classes
+
+org.apache.catalina.core.ContainerBase.[Catalina].level = INFO
+org.apache.catalina.core.ContainerBase.[Catalina].handlers = java.util.logging.ConsoleHandler
+
+
+
+
+
+
+
+
+

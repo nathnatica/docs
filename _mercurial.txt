@@ -1,0 +1,26 @@
+needs python
+
+Mercurial Central Repository
+hg init
+
+
+Mercurial Server
+hg serve -p 10034(port)
+   
+    make ./hg/hgrc file
+    edit
+        [web]
+        push_ssl=False
+        allow_push=*
+
+
+Mercurial Local Repository
+hg init
+    
+    make ./hg/hgrc file
+    edit
+        [paths]
+        default=http://HP26916201151:8000/
+
+hg com -m "message"
+
