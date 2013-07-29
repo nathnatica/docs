@@ -5,6 +5,7 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
 	"font_size": 12,
+	"bold_folder_labels": true,
 	"ignored_packages":
 	[
 	],
@@ -29,6 +30,7 @@ Package Control
 Docblockr  
   /** + [tab]
 
+Side Bar Git  
 Git  
 PlainTasks  
 SideBarEnhancements  
