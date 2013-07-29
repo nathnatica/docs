@@ -44,6 +44,7 @@ Package Control
 Docblockr  
   /** + [tab]
 
+Side Bar Git
 Git  
 PlainTasks  
 SideBarEnhancements  
