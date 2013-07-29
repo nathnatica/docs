@@ -3,13 +3,17 @@
 ##### User Setting
 ```
 {
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
-	"font_size": 12,
-	"ignored_packages":
+    "color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+    "font_size": 12,
+    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "target"],
+    "file_exclude_patterns": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db", "*.iml"],
+    "bold_folder_labels": true,
+    "translate_tabs_to_spaces": true,
+    "ignored_packages":
 	[
 	],
-	"vintage_ctrl_keys": true,
-	"vintage_start_in_command_mode": true
+    "vintage_ctrl_keys": true,
+    "vintage_start_in_command_mode": true
 }
 ```
 
