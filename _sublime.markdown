@@ -57,6 +57,7 @@ SublimeGit
 SublimeLinter  
 SublimeBlockCursor  
 Block Cursor Everywhere  
+EncodingHelper  
 
 
 
