@@ -3,3 +3,10 @@ change
 C:\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico -
 to 
 C:\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico /usr/bin/zsh --login
+
+
+
+#run sshd
+ssh-host-config -y
+
+
