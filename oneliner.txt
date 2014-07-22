@@ -9,4 +9,43 @@ grep "en-GB" *
 #tee sample
 (scp localhost:/home/user/notExistRemoteFile ./localFile 2>&1 >&3 | tee scperror.log) 3>/dev/null >> batch.log
 
+#run last command as root
+sudo !!
+
+#server currenty directory at localhost
+python -m SimpleHTTPServer 8080
+
+#save a file in vim without needed permissions
+:w !sudo tee %
+
+#run the previous shell command replacing first "foo" with "bar"
+^foo^bar^
+
+#run the previous shell command replacing all "foo" with "bar"
+!!:gs/foo/bar
+
+
+#find the last command begins with "xxx", but avoid running
+!xxx:p
+
+
+#copy public-key to remote for passwordless auth
+ssh-copy-id remote
+#(or)
+scp ~/.ssh/id_rsa.pub remote
+ssh remote
+cat id_rsa.pub >> ~/.ssh/authorized_keys
+
+
+
+
+
+
+
+
+
+
+
+
+
 
