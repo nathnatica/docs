@@ -278,6 +278,7 @@ git rebase --abort
 
 # reorder, edit, removing, squashing multiple commits, splitting commit
 git rebase -i <to commit>
+git rebase -i HEAD~4 (rebase with last 4 commits)
 
 
 
