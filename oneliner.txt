@@ -39,7 +39,11 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 
 
 
+#convert dos newline to unix newline
+sed -i 's/.$//' file
 
+#convert unix newline to dos newline
+sed -i "s/$/`echo -e \\\r`/" file
 
 
 
