@@ -47,9 +47,12 @@ sed -i "s/$/`echo -e \\\r`/" file
 
 
 
-
-
-
+# extract csv without last 16 columns in a dirctory
+# and print out to another directory
+for i in $(ls -1 /tmp/Report_*.csv);
+do 
+	/bin/awk 'BEGIN { FS="\",\""; ORS = "\r\n"; OFS="\",\"" } { for (i=1;i<=NF-17;i++){ printf $i OFS }; print $(NF-16) "\"" }' $i > `echo $i | sed -e 's:tmp/Report_:temp/report_X_:g'`;
+done
 
 
 
