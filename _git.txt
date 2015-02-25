@@ -30,8 +30,12 @@ ignore-dir/
 tmp/**/*
 log/*
 
+# show config
+git config -l
 # global setting 
 git config --global core.excludesfiles ~/.gitignore
+# configure alias
+git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline --decorate'
 # or modify
 .git/info/exclude
 
@@ -74,13 +78,12 @@ git log -1 --pretty=oneline 534adf
 git log --pretty=short --abbrev-commit --stat master~12..master~10
 git show adf67da6f8dadf5af45a
 git show-branch --more=10
-git diff <old commit id> <new commit id>
 
 # remove
 # delete from index and working directory
 git rm noneed.html
 git rm -f <file>
-# delete from index only
+# delete from index only // unstage
 git rm --cached <file>
 
 # rename
@@ -90,31 +93,15 @@ git add bar.html
     or 
 git mv foo.html bar.html
 
-# show config
-git config -l
 
-# configure alias
-git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline --decorate'
 
 
 # tag
 git tag -m"Tag Version 1.0" V1.0 3ed354
 
 
-
-# diff
-git diff --cached
-
-# unstage file
-git rm --cached filename
-
-
-# remove index and working copy both
-git rm filename
-
 # to recover from deleted file
 git checkout HEAD -- filename
-
 
 #
 gitk

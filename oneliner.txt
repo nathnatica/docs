@@ -55,4 +55,8 @@ do
 done
 
 
+#change login shell
+less /etc/shells
+chsh -s /bin/zsh
+
 
