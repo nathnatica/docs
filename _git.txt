@@ -36,6 +36,11 @@ git config -l
 git config --global core.excludesfiles ~/.gitignore
 # configure alias
 git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline --decorate'
+# git alias from tj
+amend = commit --amend
+rank = shortlog -sn --no-merges
+s = status -s
+whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 # or modify
 .git/info/exclude
 
@@ -95,13 +100,8 @@ git mv foo.html bar.html
 
 
 
-
 # tag
 git tag -m"Tag Version 1.0" V1.0 3ed354
-
-
-# to recover from deleted file
-git checkout HEAD -- filename
 
 #
 gitk
@@ -375,9 +375,5 @@ chmod 755 hooks/post-update
 
 
 
-
-#####
-refresh git after add something to .gitignore
-git rm -cahced <file>
 
 
