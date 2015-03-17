@@ -21,3 +21,26 @@ might need to comment out
 `SSLPassPhraseDialog  builtin` part  
 
 
+####Basic Auth Setting
+1.
+htpasswd -c /path/to/passwd/passwords park
+
+2.in httpd.conf  
+LoadModule auth_basic_module modules/mod_auth_basic.so  
+
+<VirtualHost 127.0.0.1:80>
+    Alias /security "/path/to/dir"
+
+	<Directory "/path/to/dir">
+		AuthType Basic
+		AuthName "Restricted Files"
+		AuthBasicProvider file
+		AuthUserFile "/path/to/passwd/passwords"
+		Require user park 
+	</Directory>
+</VirtualHost>
+
+
+
+
+
