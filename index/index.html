@@ -80,11 +80,12 @@
 
                     $scope.onKeyUp = function ($event) {
                         getKeyboardEventResult($event);
-                        $('div[id^="jp"]').hide();
-                        $('div[id^="uk"]').hide();
-                        $('div[id^="us"]').hide();
-                        $('div[id^="tw"]').hide();
-                        $('div[id^="trac"]').hide();
+                        $('div').filter('[id]').hide();
+                        //$('div[id^="jp"]').hide();
+                        //$('div[id^="uk"]').hide();
+                        //$('div[id^="us"]').hide();
+                        //$('div[id^="tw"]').hide();
+                        //$('div[id^="trac"]').hide();
                         if ($scope.editValue.length > 2) {
                             $('div[id="' + $scope.editValue.substring(0, 2) + '"]').show();
                         }
