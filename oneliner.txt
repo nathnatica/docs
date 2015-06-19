@@ -63,3 +63,14 @@ less /etc/shells
 chsh -s /bin/zsh
 
 
+# check duplicated line in file
+sort file | uniq -c | grep -v '^ *1 '
+
+
+
+
+
+
+
+
+

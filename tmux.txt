@@ -1,0 +1,74 @@
+Steps to install tmux in Cygwin
+
+While these steps probably still work, they are no longer necessary because tmux can now be installed through the Cygwin setup program like other tools.
+
+    Install required Cygwin packages
+        run Cygwin setup.exe
+        install these packages that are not installed by default:
+        automake, gcc, git and pkg-config 
+
+    Install libevent
+        browse http://libevent.org
+        download libevent-2.0.21-stable.tar.gz
+        open a cygwin terminal
+        cd to directory containing downloaded file
+        tar zxf libevent-2.0.21-stable.tar.gz
+        cd libevent-2.0.21-stable
+        ./configure --prefix=/usr
+        make && make install
+        browse http://ftp.gnu.org/gnu/ncurses
+        download ncurses-5.9.tar.gz
+        open a cygwin terminal
+        cd to directory containing downloaded file
+        tar zxf ncurses-5.9.tar.gz
+        cd ncurses-5.9
+        ./configure --prefix=/usr
+        make && make install
+
+    Install tmux
+        open a cygwin terminal
+        git clone http://git.code.sf.net/p/tmux/tmux-code tmux-tmux-code
+        cd tmux-tmux-code
+        ./autogen.sh (will see many warnings; if it complains about \r not found, convert autogen.sh to use Unix line endings with mv autogen.sh temp.sh; dos2unix -o autogen.sh temp.sh)
+        CFLAGS="-I/usr/include/ncurses" ./configure --prefix=/usr
+        make && make install
+
+    Configure Cygwin and tmux
+        to use the Solarized color scheme, see here.
+        to manually adjust colors, fonts, cursor shape, and more right-click the Cygwin title bar and select "Options...".
+        create a .tmux.conf file include at least this line so the mouse and arrow keys can be used to switch panes:
+        set -sg escape-time 250
+        for more information about tmux configuration, see here. 
+    run tmux
+        open a cygwin terminal using mintty (the shortcut that opens the terminal should run C:\cygwin\bin\mintty.exe)
+        tmux
+
+
+
+----------------------
+
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure && make
+
+if "undefined _cur_term" error then delete comment out corresponding line
+
+
+
+--------------------
+~/.tmux.conf
+
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+set -g status-keys vi
+setw -g mode-keys vi
+
+
+--------------------
+
+
+
+

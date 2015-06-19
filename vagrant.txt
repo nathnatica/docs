@@ -1,0 +1,68 @@
+###
+# install vigrant
+
+# commands
+vagrant init hashicorp/precise32
+vagrant up
+vagrant ssh
+vagrant global-status
+vagrant destroy <ID>
+
+
+# shared folder location
+vagrant ssh
+cd /vagrant
+
+
+# make bootstrap.sh(install apache)
+sudo bootstrap.sh
+wget -qO- 127.0.0.1
+cd /etc/apache2
+
+# restart your virtual machine, skipping the initial import step.
+vagrant reload --provision
+
+
+# refresh vagrant status when not existing box displayed
+vagrant global-status --prune
+
+
+
+
+
+--------------------------
+vagrant plugin list
+vagrant plugin install vagrant-omnibus
+-------------------------
+CENTOS_64_i386
+
+vagrant box add centos64 http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-i386-v20131103.box
+
+vagrant init centos64
+
+
+sudo yum install httpd
+sudo chkconfig --level 345 httpd on
+sudo /etc/init.d/httpd start
+sudo vi /etc/sysconfig/iptables
+
+
+#sudo yum install java -- try to install java 5 and already exists
+sudo yum -y install java-1.6.0-openjdk
+sudo yum install tomcat6 tomcat6-webapps tomcat6-admin-webapps
+sudo vi /etc/tomcat6/tomcat6.conf
+
+
+
+
+
+--------------------
+synced folder
+
+#disable the default /vagrant
+config.vm.synced_folder ".", "/vagrant", disabled: true
+#owner group
+config.vm.synced_folder "src/", "/srv/website", owner: "root", group: "root"
+
+
+

@@ -1,0 +1,29 @@
+
+## proxy setting
+export http_proxy=http://id:pass@proxyurl:port
+export https_proxy=https://id:pass@proxyurl:port
+###### docker basic commands
+docker search centos
+/etc/init.d/docker restart
+docker pull centos:latest
+docker run -i -t --name cname centos:latest /bin/bash
+docker ps -a
+docker start test 
+docker restart test
+docker attach test
+ctrl+P+Q quit without shutdown(detach)
+docker stop test
+docker rm test
+docker rmi centos:latest
+
+-- need virtulabox port forwarding NAT
+docker run -d -p 8080:8080 --name cname centos:latest pushd /somewhere;python -m SimpleHTTPServer 8080;popd;
+
+
+
+
+## boot2docker image resize
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" clonehd "C:\share\docker\vmdk\boot2docker-v1.2.0-virtualbox-guest-additions-v4.3.14.vmdk" "C:\share\docker\vmdk\boot2docker-v1.2.0-virtualbox-guest-additions-v4.3.14_park.vmdk" --format VDI --variant Standard
+
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifyhd "C:\share\docker\vmdk\boot2docker-v1.2.0-virtualbox-guest-additions-v4.3.14_park.vmdk" --resize 20000
+

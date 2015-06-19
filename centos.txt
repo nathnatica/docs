@@ -1,0 +1,29 @@
+-- centos 6 img account
+root/reverse
+
+
+-- CentOS 7 img account
+Credentials & Info
+
+Username: osboxes
+
+Password: osboxes.org
+
+Password for Root account: osboxes.org
+
+VB Guest Additions & VMware Tools: Not Installed
+
+
+## CentOS 7 run level change
+# show current setting
+systemctl get-default 
+ll /etc/systemd/system/default.target 
+# set
+systemctl set-default graphical.target 
+systemctl set-default multi-user.target 
+
+
+
+#useradd -u 1001 -g wheel nath
+#passwd nath
+
