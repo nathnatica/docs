@@ -66,11 +66,11 @@ chsh -s /bin/zsh
 # check duplicated line in file
 sort file | uniq -c | grep -v '^ *1 '
 
+sort input.txt | uniq > sorted.uniq.txt
 
 
-
-
-
+# delete .svn folders
+find -type d -name ".svn" -exec rm -rf {} \;
 
 
 
