@@ -32,6 +32,10 @@ log/*
 
 # show config
 git config -l
+# ignore file mode 
+git config --global core.filemode false
+# and need to run 'git init' to new repository
+
 # global setting 
 git config --global core.excludesfiles ~/.gitignore
 # configure alias
