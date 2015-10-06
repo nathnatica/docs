@@ -25,3 +25,39 @@ mvn install:install-file -DgroupId=org.apache.maven.surefire -DartifactId=surefi
 
 
 mvn -Djetty.port=10000 jetty:run
+
+----------------- ----------------- ----------------- -----------------
+maven nexus setting
+.m2/setting.xml
+
+  <servers>
+    <server>
+      <id>releases</id>
+      <username>deployment</username>
+      <password>qkrtjdgh</password>
+    </server>
+    <server>
+      <id>thirdparty</id>
+      <username>deployment</username>
+      <password>qkrtjdgh</password>
+    </server>
+  </servers>
+
+
+pom.xml
+
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>thirdparty</id>
+            <name>3rd Party Repository</name>
+            <url>http://localhost:8081/nexus/content/repositories/thirdparty</url>
+            <layout>default</layout>
+        </repository>
+	</distributionManagement>
+
+
+
+
+

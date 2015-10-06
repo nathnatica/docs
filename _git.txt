@@ -378,6 +378,27 @@ chmod 755 hooks/post-update
 
 
 
+### Refreshing Line Ending
+git add . -u
+git commit -m "saving files before refreshing line endings"
+# remove every file from git's index
+git rm --cached -r .
+# rewrite the git index to pick up all the new line endings
+git rest --hard
+# add all changes files
+git add .
+# commit
+git commit -m "normalize all the line endings"
+
+
+
+
+
+
+
+
+
+
 
 
 
