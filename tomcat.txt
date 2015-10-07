@@ -1,0 +1,26 @@
+##### tomcat6 log setting
+make logging.properties in /WEB-INF/classes
+
+org.apache.catalina.core.ContainerBase.[Catalina].level = INFO
+org.apache.catalina.core.ContainerBase.[Catalina].handlers = java.util.logging.ConsoleHandler
+
+
+
+# multiple tomcat install
+# java 8
+# tomcat 8
+# 
+# 1.extract apache-tomcat-8.0.27.tar.gz
+# 2.extract jdk-8u60-linux-x64.tar.gz
+# 3.add below startup.sh and shutdown.sh
+export JAVA_HOME=/var/tmp/jdk1.8.0_60
+export JRE_HOME=/var/tmp/jdk1.8.0_60
+export CATALINA_HOME=/var/tmp/apache-tomcat-8.0.27
+# in case permission error in /var/run/catalina.pid
+export CATALINA_PID=/var/tmp/apache-tomcat-8.0.27/catalina.pid
+# remove default java/bin path and use new one
+export PATH=/var/tmp/jdk1.8.0_60/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin
+
+
+
+
