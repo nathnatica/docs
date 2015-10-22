@@ -2,6 +2,32 @@ system environment setting
 M2_HOME C:\apache-maven-2.2.1
 MAVEN_OPTS  -Xmx1024m -Xdebug -Xnoagent -Djava.compiler=NONE -agentlib:jdwp=transport=dt_socket,address=4000,server=y,suspend=n
 
+----------------- ----------------- ----------------- -----------------
+
+// springload setting in classic way
+export MAVEN_OPTS="-javaagent:C:\Users\me\.m2\repository\org\springframework\springloaded\1.2.4.RELEASE\springloade
+d-1.2.4.RELEASE.jar -noverify"
+
+<plugin>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+	<version>${spring.boot.version}</version>
+	<!-- 
+		need because
+			has a bug with using springloaded in pom("Address already in use" when restart)
+		reload classes in classic way
+			MAVEN_OPTS="-javaagent:C:\Users\me\.m2\repository\org\springframework\springloaded\1.2.4.RELEASE\springloaded-1.2.4.RELEASE.jar -noverify"
+		but still need fork:false don't know why
+	-->
+	<configuration>
+		<fork>false</fork>
+	</configuration>
+</plugin>
+
+
+
+
+----------------- ----------------- ----------------- -----------------
 
 C:\Documents and Settings\park\.m2\settings.xml
 
@@ -20,9 +46,11 @@ C:\Documents and Settings\park\.m2\settings.xml
 </settings>
 
 
+----------------- ----------------- ----------------- -----------------
 
 mvn install:install-file -DgroupId=org.apache.maven.surefire -DartifactId=surefire-junit4 -Dversion=2.4.3 -Dpackaging=jar -Dfile=/path/to/file
 
+----------------- ----------------- ----------------- -----------------
 
 mvn -Djetty.port=10000 jetty:run
 
