@@ -18,11 +18,31 @@ admin=admin
 4
 svnserve.exe -d --root C:\svn-repository
 
+5
+set SVN_EDITOR=pathtoeditor
+export SVN_EDITOR=/usr/bin/vim
 
-dont do this causes cliend error
+svn mkdir svn://localhost/myroject
+
+
+6
+svn://localhost/myproject
+
+
+7
+if occurs uuid mismatch
+then modify db/uuid file
+with from repository server uuid
+
+8
+8-1 import source to new repository
+8-2 remove existing .svn folder
+8-3 and checkout from new repository
+
+
+
+dont do this causes client error
 svn.exe cleanup C:\workspace\test-mvn-front
-
-
 
 
 -------------------------------
