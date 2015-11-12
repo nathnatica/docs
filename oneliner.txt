@@ -73,4 +73,8 @@ sort input.txt | uniq > sorted.uniq.txt
 find -type d -name ".svn" -exec rm -rf {} \;
 
 
+# find non CRLF file
+find ./ -name "*.java" -exec file {} \; | grep -v "CRLF"
+
+
 
