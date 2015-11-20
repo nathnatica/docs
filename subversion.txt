@@ -39,6 +39,10 @@ with from repository server uuid
 8-2 remove existing .svn folder
 8-3 and checkout from new repository
 
+9 switch svn repositorys on windows
+9-1 rm .svn folder
+9-2 checkout from other repository
+9-3 then existing repository directory will be versioned
 
 
 dont do this causes client error
