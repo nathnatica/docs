@@ -24,8 +24,10 @@ export SVN_EDITOR=/usr/bin/vim
 
 svn mkdir svn://localhost/myroject
 
+# check svn repository list
+svn list svn://localhost
 
-6
+6 access to
 svn://localhost/myproject
 
 
