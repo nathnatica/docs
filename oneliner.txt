@@ -76,5 +76,10 @@ find -type d -name ".svn" -exec rm -rf {} \;
 # find non CRLF file
 find ./ -name "*.java" -exec file {} \; | grep -v "CRLF"
 
+# find files with text
+find . -name "*.java" | grep -v svn | xargs grep -i 'some text' | awk -F: '{print $1}' | sort | uniq
+
+
+
 
 
