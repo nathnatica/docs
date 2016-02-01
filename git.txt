@@ -309,6 +309,10 @@ git show-ref
 # show simbol ref list of remote repository
 git ls-remote <remote>
 
+# remote remote branch
+git push <remote> --delete <branch>
+
+
 # "depot" - agreed-on authoritative copy repository, remote origin for all developers
 
 # Example
