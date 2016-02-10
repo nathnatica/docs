@@ -86,6 +86,11 @@ pom.xml
 	</distributionManagement>
 
 
+----------------- ----------------- ----------------- -----------------
+
+CLI skip test 
+mvn install -Dmaven.test.skip=true
+
 
 
 
