@@ -399,6 +399,14 @@ git commit -m "normalize all the line endings"
 
 
 
+### ignore tracked files to be showd modified
+git update-index --assume-unchanged <file>
+### ignore tracked files to be showd modified(undo)
+git update-index --no-assume-unchanged <file>
+### check ignored tracked file list
+git ls-files -v | grep '^[[:lower:]]'
+
+
 
 
 
