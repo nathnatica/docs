@@ -1,0 +1,21 @@
+### browser mode
+java -jar h2*.jar
+
+### server mode
+java -cp h2*.jar org.h2.tools.Server
+
+### see server mode options
+java -cp h2*.jar org.h2.tools.Server -?
+
+### run tcp and web console server
+java -cp h2*.jar org.h2.tools.Server -web -webAllowOthers -tcp -tcpAllowOthers
+
+
+### and access
+http://localhost:8082/
+
+
+
+
+
+
