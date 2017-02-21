@@ -52,9 +52,11 @@ sed -i "s/$/`echo -e \\\r`/" file
 
 # extract csv without last 16 columns in a dirctory
 # and print out to another directory
+# a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q
+# -> a,b,c,d,e,f,g,h
 for i in $(ls -1 /tmp/Report_*.csv);
 do 
-	/bin/awk 'BEGIN { FS="\",\""; ORS = "\r\n"; OFS="\",\"" } { for (i=1;i<=NF-17;i++){ printf $i OFS }; print $(NF-16) "\"" }' $i > `echo $i | sed -e 's:tmp/Report_:temp/report_X_:g'`;
+	/bin/awk 'BEGIN { FS="\",\""; ORS = "\r\n"; OFS="\",\"" } { for (i=1;i<=NF-10;i++){ printf $i OFS }; print $(NF-9) "\"" }' $i > `echo $i | sed -e 's:tmp/Report_:temp/report_X_:g'`;
 done
 
 
