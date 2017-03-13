@@ -1,8 +1,7 @@
 
-
 connect with sys as sysdba
 
-Å°Å@êVãKUSERçÏê¨
+‚ñ†„ÄÄÊñ∞Ë¶èUSER‰ΩúÊàê
 
 DROP USER gdsjp_ut4_ora CASCADE;
 
@@ -25,7 +24,7 @@ GRANT EXECUTE ON sys.dbms_crypto to gdsjp_ut4_ora;
 
 -----------------------------------------------
 
-Å°Å@EXPORT AND IMPORT 
+‚ñ†„ÄÄEXPORT AND IMPORT 
 cd /opt/oracle/admin/orcl/dpdump
 
 expdp gdsjp_ut3_ora/gdsjp_ut3_ora schemas=gdsjp_ut3_ora directory=DATA_PUMP_DIR file=ut3.dmp log=exp.log
@@ -33,5 +32,4 @@ expdp gdsjp_ut3_ora/gdsjp_ut3_ora schemas=gdsjp_ut3_ora directory=DATA_PUMP_DIR 
 impdp gdsjp_ut4_ora/gdsjp_ut4_ora remap_schema=gdsjp_ut3_ora:gdsjp_ut4_ora directory=DATA_PUMP_DIR file=ut3.dmp log=imp.log
 
 -----------------------------------------------
-
 
