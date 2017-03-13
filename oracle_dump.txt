@@ -1,0 +1,37 @@
+
+
+connect with sys as sysdba
+
+Å°Å@êVãKUSERçÏê¨
+
+DROP USER gdsjp_ut4_ora CASCADE;
+
+CREATE USER gdsjp_ut4_ora IDENTIFIED BY "gdsjp_ut4_ora";
+
+GRANT ALTER SESSION TO gdsjp_ut4_ora;
+GRANT CREATE ANY DIRECTORY TO gdsjp_ut4_ora;
+GRANT CREATE PROCEDURE TO gdsjp_ut4_ora;
+GRANT CREATE SEQUENCE TO gdsjp_ut4_ora;
+GRANT CREATE SESSION TO gdsjp_ut4_ora;
+GRANT CREATE TABLE TO gdsjp_ut4_ora;
+GRANT CREATE TYPE TO gdsjp_ut4_ora;
+GRANT CREATE VIEW TO gdsjp_ut4_ora;
+GRANT EXECUTE ANY PROCEDURE TO gdsjp_ut4_ora;
+GRANT EXPORT FULL DATABASE TO gdsjp_ut4_ora;
+GRANT IMPORT FULL DATABASE TO gdsjp_ut4_ora;
+GRANT SELECT ANY DICTIONARY TO gdsjp_ut4_ora;
+GRANT UNLIMITED TABLESPACE TO gdsjp_ut4_ora;
+GRANT EXECUTE ON sys.dbms_crypto to gdsjp_ut4_ora;
+
+-----------------------------------------------
+
+Å°Å@EXPORT AND IMPORT 
+cd /opt/oracle/admin/orcl/dpdump
+
+expdp gdsjp_ut3_ora/gdsjp_ut3_ora schemas=gdsjp_ut3_ora directory=DATA_PUMP_DIR file=ut3.dmp log=exp.log
+
+impdp gdsjp_ut4_ora/gdsjp_ut4_ora remap_schema=gdsjp_ut3_ora:gdsjp_ut4_ora directory=DATA_PUMP_DIR file=ut3.dmp log=imp.log
+
+-----------------------------------------------
+
+
