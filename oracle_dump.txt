@@ -1,6 +1,9 @@
 
 connect with sys as sysdba
 
+sqlplus sys/pass@somedb as sysdba 
+less /opt/oracle/product/11.2/network/admin/tnsnames.ora
+
 ■　新規USER作成
 
 DROP USER gdsjp_ut4_ora CASCADE;
