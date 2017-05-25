@@ -442,4 +442,9 @@ git reset <mode> <commit>
 	   discarded.
 
 
+### 自分のコミットと、直前のコミットとの修正ファイルを確認
+git diff HEAD^..HEAD --name-only
+
+
+
 
