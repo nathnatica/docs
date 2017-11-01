@@ -83,5 +83,20 @@ find . -name "*.java" | grep -v svn | xargs grep -i 'some text' | awk -F: '{prin
 
 
 
+# tomcat debugging throuhg tunnel
+# LOCAL ---- PROXY ---- REMOTE
+# 
+ssh -L <local port>:localhost:<proxy port> <proxy account>@<proxy domain> -i /c/TEMP/chika_sata.pem
+ssh -L <proxy port>:localhost:<remote port> <remote account>@<remote domain>
+
+
+# format xml file (one line per tag)
+tr '\n' ' ' < input.xml | sed 's/>[ \t]*</></g' | sed 's/><tagname/>\n<tagname/g' > output.xml
+# and remove html comments(use perl for non greedy pattern matching)
+cat input.xml | perl -pe 's/<!--.*?-->//g' > output.xml
+
+
+
+
 
 

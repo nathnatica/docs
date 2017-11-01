@@ -1,0 +1,6 @@
+
+
+### copy local directory test to remote server
+rsync -azvh test tomcat@192.168.1.127:/home/tomcat/
+
+

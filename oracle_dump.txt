@@ -36,3 +36,8 @@ impdp gdsjp_ut4_ora/gdsjp_ut4_ora remap_schema=gdsjp_ut3_ora:gdsjp_ut4_ora direc
 
 -----------------------------------------------
 
+
+sqlplus id/pass@localhost:1521/orcl.localdomain @file.sql
+
+
+
