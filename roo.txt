@@ -1,7 +1,0 @@
->roo
-
-
-
->script --file file.roo
-
->quit
