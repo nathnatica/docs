@@ -29,5 +29,8 @@ DROP ROLE me
 CREATE ROLE me WITH PASSWORD 'mypassword' VALID UN-TIL '2020-12-31' CREATEDB LOGIN  
 
 
+#### file load
+psql -U user -d database -a -f pathtofile
+
 
 

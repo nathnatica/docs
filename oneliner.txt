@@ -97,6 +97,8 @@ cat input.xml | perl -pe 's/<!--.*?-->//g' > output.xml
 
 
 
+# check whether new line exists at eof
+find ./ -type f -exec newline_at_eof.sh {} \;
 
 
 

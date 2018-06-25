@@ -242,6 +242,8 @@ git reset --hard ORIGIN_HEAD
 # return to the original conflict state
 git checkout -m
 
+# undo merge
+git merge --abort
 
 
 
