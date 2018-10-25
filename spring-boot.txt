@@ -1,0 +1,18 @@
+
+
+## intellij idea automatic reload
+0. add to pom.xml
+<dependency>
+  <groupid>org.springframework.boot</groupid>
+  <artifactid>spring-boot-devtools</artifactid>
+</dependency>
+
+1. Open the Settings > Build-Execution-Deployment > Compiler
+  and enable the Make Project Automatically.
+
+2. press Ctrl + Alt + A and search registry. and enable
+  compiler.automake.allow.when.app.running
+
+3. restart the IDE
+
+

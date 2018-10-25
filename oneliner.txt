@@ -81,6 +81,12 @@ find ./ -name "*.java" -exec file {} \; | grep -v "CRLF"
 # find files with text
 find . -name "*.java" | grep -v svn | xargs grep -i 'some text' | awk -F: '{print $1}' | sort | uniq
 
+# grep including sub directories
+# -H show file path
+# -h not show file path
+# -n show line number
+# -r recursive search
+grep -Hrn 'some text' path/to/dir
 
 
 # tomcat debugging throuhg tunnel
@@ -99,6 +105,29 @@ cat input.xml | perl -pe 's/<!--.*?-->//g' > output.xml
 
 # check whether new line exists at eof
 find ./ -type f -exec newline_at_eof.sh {} \;
+
+
+
+# bash loop line by line from input file
+cnt=0;
+for var in `cat inpuf.file`
+do
+	#echo $var
+	cnt=$(( cnt + 1 ))
+	if [ $cnt -eq 100 ]; then
+		echo sleep;
+		sleep 1;
+		cnt=0;
+	fi
+done
+
+# bash string length
+v="abc";
+echo ${#v};
+
+
+
+
 
 
 

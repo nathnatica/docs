@@ -8,10 +8,11 @@ postmaster -D /usr/local/pgsql/data -i &
 
 #### CREATE DATABASE1  
 ##### psql -h localhost -p 5432 -U [user] -l   
-psql -h localhost -p 5432 -U me -l  
-psql -h localhost -p 5432 -U me postgres  
+psql -h localhost -p 5432 -U park -l  
 dropdb -h localhost -p 5432 -i -e testdb  
-createdb -O me -T postgres testdb  
+psql -h localhost -p 5432 -U park -l  
+createdb -O park -T postgres testdb  
+psql -h localhost -p 5432 -U park testdb  
 
 #### CREATE DATABASE2  
 ##### create a new database from other database  
@@ -29,8 +30,17 @@ DROP ROLE me
 CREATE ROLE me WITH PASSWORD 'mypassword' VALID UN-TIL '2020-12-31' CREATEDB LOGIN  
 
 
-#### file load
-psql -U user -d database -a -f pathtofile
+#### file load  
+psql -U user -d database -a -f pathtofile  
 
+
+#### record lock release  
+select * from pg_locks l, pg_stat_all_tables t where l.relation = t.relid and relname = 'table_name';  
+select pg_terminate_backend('pid');  
+
+
+#### prepared statement  
+prepare sel_sql (varchar, integer) as select $1 as code from table where key = $2;  
+execute sel_sql('01', 1);  
 
 
