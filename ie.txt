@@ -1,0 +1,3 @@
+### to use local storage
+use address like
+file://127.0.0.1/c$/Users/me/Desktop/__etcs/angular/toppage/index.html

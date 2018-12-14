@@ -41,6 +41,8 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 
 
 
+#edit files in-place with backup file
+sed -i'.bak' 's/from/to/g' file
 
 #convert dos newline to unix newline
 sed -i 's/.$//' file
