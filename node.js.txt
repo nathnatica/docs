@@ -1,5 +1,0 @@
-put sample.js javascript file in /usr/
-cd bin
-node.txt ../sample.js
-
-and browse
