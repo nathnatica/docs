@@ -57,7 +57,7 @@ sed -i "s/$/`echo -e \\\r`/" file
 # a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q
 # -> a,b,c,d,e,f,g,h
 for i in $(ls -1 /tmp/Report_*.csv);
-do 
+do
 	/bin/awk 'BEGIN { FS="\",\""; ORS = "\r\n"; OFS="\",\"" } { for (i=1;i<=NF-10;i++){ printf $i OFS }; print $(NF-9) "\"" }' $i > `echo $i | sed -e 's:tmp/Report_:temp/report_X_:g'`;
 done
 
@@ -93,7 +93,7 @@ grep -Hrn 'some text' path/to/dir
 
 # tomcat debugging throuhg tunnel
 # LOCAL ---- PROXY ---- REMOTE
-# 
+#
 ssh -L <local port>:localhost:<proxy port> <proxy account>@<proxy domain> -i /c/TEMP/chika_sata.pem
 ssh -L <proxy port>:localhost:<remote port> <remote account>@<remote domain>
 
@@ -108,6 +108,9 @@ cat input.xml | perl -pe 's/<!--.*?-->//g' > output.xml
 # check whether new line exists at eof
 find ./ -type f -exec newline_at_eof.sh {} \;
 
+if [ ! -z $(tail -c 1 ./c) ]; then
+  echo "no eof";
+fi
 
 
 # bash loop line by line from input file
@@ -127,9 +130,5 @@ done
 v="abc";
 echo ${#v};
 
-
-
-
-
-
-
+# get data from 2nd line(preserve line ending)
+sed -nb '2,$p' < input >> output
