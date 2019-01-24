@@ -1,0 +1,33 @@
+keymap.cson
+
+
+'.platform-win32, .platform-linux':
+  'alt-1': 'tree-view:toggle-focus'
+  'ctrl-g': 'find-and-replace:show'
+
+'body':
+  'ctrl-f4': 'window:close'
+  'ctrl-shift-W': 'core:close'
+  'ctrl-shift-N': 'unset!'
+
+'atom-text-editor.vim-mode.normal-mode':
+  'ctrl-t': 'fuzzy-finder:toggle-file-finder'
+
+----------------------
+packages
+
+atom-beautify
+atom-jshint
+autocomplete-paths
+busy-signal
+file-icons
+goto-definition
+intentions
+linter-shellcheck
+linter-ui-default
+minimap
+sort-lines
+tool-bar
+vim-mode
+vim-mode-plus
+  
