@@ -132,3 +132,13 @@ echo ${#v};
 
 # get data from 2nd line(preserve line ending)
 sed -nb '2,$p' < input >> output
+
+# tar
+# create
+tar -cf archive.tar ./relative/path/file
+# add
+tar -rf archive.tar ./relative/path/file
+# extract
+tar -xf archive.tar
+# list
+tar -tf archive.tar
