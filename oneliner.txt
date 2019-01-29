@@ -112,6 +112,13 @@ if [ ! -z $(tail -c 1 ./c) ]; then
   echo "no eof";
 fi
 
+# return string value at function
+function GET_VALUE() {
+	echo 'VAL'
+}
+
+val=$( GET_VALUE ${PARAM} )
+
 
 # bash loop line by line from input file
 cnt=0;
