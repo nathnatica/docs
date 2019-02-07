@@ -149,3 +149,12 @@ tar -rf archive.tar ./relative/path/file
 tar -xf archive.tar
 # list
 tar -tf archive.tar
+
+# bash function return value check
+function getVal() {
+	return 0;
+}
+
+if getVal ${arg} && getVal ${arg2}; then
+	# do something(check ok and check ok)
+fi
