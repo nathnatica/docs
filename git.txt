@@ -1,8 +1,8 @@
-####Git  
+####Git
 
 # install
 # Mac
-$brew install git 
+$brew install git
 # ubuntu family
 $apt-get install git-core git-daemon-run gitweb
 # fefora family
@@ -32,14 +32,14 @@ log/*
 
 # show config
 git config -l
-# ignore file mode 
+# ignore file mode
 git config --global core.filemode false
 # and need to run 'git init' to new repository
 
 # set line ending for working directory
 git config core.eol crlf
 
-# global setting 
+# global setting
 git config --global core.excludesfiles ~/.gitignore
 # configure alias
 git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline --decorate'
@@ -51,7 +51,7 @@ whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 # or modify
 .git/info/exclude
 
-# and svn ignore settting 
+# and svn ignore settting
 svn propset svn:ignore .git .
 
 
@@ -67,13 +67,13 @@ git clone <source repository> <target directory>
 
 # clone specific branch from remote repository
 git clone -b <specific branch> <source> <target>
-or 
+or
 git clone <source> <target>
 git checkout -b <branch> origin(<remote repository>)/<branch>
 
 git status
 # see indexed files
-git ls-files -s 
+git ls-files -s
 git add <filename>
 git add <directory>
 # proejct directory indexing
@@ -102,13 +102,16 @@ git rm --cached <file>
 mv foo.html bar.html
 git rm foo.html
 git add bar.html
-    or 
+    or
 git mv foo.html bar.html
 
 
 
 # tag
 git tag -m"Tag Version 1.0" V1.0 3ed354
+git tag tags/tag-name
+# push new tags created
+git push origin --tags
 
 #
 gitk
@@ -165,7 +168,7 @@ git push origin --delete <branch>
 git branch -d <branch>
 
 # after accidently removing a branch or other ref,
-# you can recover it by using 
+# you can recover it by using
 git reflog
 git fsck
 # and configuration options like
@@ -195,14 +198,14 @@ git checkout HEAD -- <file>
 
 
 # diff
-# unified diff standardized format 
+# unified diff standardized format
 diff -u <file1> <file2>
 
 # diff working directory and index
 git diff
-# diff working directory and given commit 
+# diff working directory and given commit
 git diff <commit>
-# diff staged changes and given commit 
+# diff staged changes and given commit
 git diff --cached <commit>
 git diff --staged <commit>
 # diff two arbitrary commits
@@ -252,7 +255,7 @@ git merge --abort
 git reset --soft <commit>
 # changes HEAD ref to point to the given commit, index changed as if you had just staged all the changes,  working directory unchanged(default)
 git reset --mixed <commit>
-# changes HEAD ref to point to the given commit, index, working directory changed 
+# changes HEAD ref to point to the given commit, index, working directory changed
 git reset --hard <commit>
 # example1) unstaging
 git reset HEAD foo.c
@@ -306,7 +309,7 @@ git fetch <remote>
 # merge changes into a corresponding branch
 git pull
 # transfers objects and their related metadata to a remote repository
-git push 
+git push
 # remove remote and remote branch
 git remote rm <remote>
 # remove remote branch which does not exist in remote repository
@@ -350,7 +353,7 @@ git-daemon --inetd --verbose --export-all
 /pub/git.example.com/software/
 /pub/www.example.org/software/
 
-# will be accessed with 
+# will be accessed with
 git://git.example.com/software/repository.git
 git://www.example.org/software/repository.git
 
@@ -446,7 +449,3 @@ git reset <mode> <commit>
 
 ### 自分のコミットと、直前のコミットとの修正ファイルを確認
 git diff HEAD^..HEAD --name-only
-
-
-
-
