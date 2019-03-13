@@ -158,3 +158,6 @@ function getVal() {
 if getVal ${arg} && getVal ${arg2}; then
 	# do something(check ok and check ok)
 fi
+
+# squeeze blank line
+cat -s ${file}

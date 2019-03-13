@@ -22,12 +22,43 @@ CREATE DATABASE new_database_name WITH TEMPLATE originaldb OWNER me;
 GRANT ALL PRIVILEGES ON DATABASE new_database_name TO my_user;  
 \l  
 
+#### CREATE DATABASE3  
+psql -h localhost -p 5432 -U postgres;
+DROP ROLE me;
+CREATE ROLE me WITH PASSWORD 'password' VALID UNTIL '2030-12-31' CREATEDB LOGIN;
+alter user me VALID UNTIL 'infinity';
+
+CREATE DATABASE test_db OWNER me;
+GRANT ALL PRIVILEGES ON DATABASE test_db TO me;
+
+psql -h jmas001 -p 5432 -U me -d test_db;
+
+drop schema test_db_psgr cascade;
+create schema test_db_psgr;
+
+alter user me set search_path to test_db_psgr;
+grant usage on schema test_db_psgr to me;
+
+drop table test_db_psgr.temp;
+create table test_db_psgr.temp(
+  ID INT NOT NULL,
+  NAME VARCHAR(30),
+  QTY INT NOT NULL
+);
+
+
 #### CREATE NEW USER  
 ##### do with postgres  
 createuser -P -e park  
 ##### or this is better  
 DROP ROLE me  
-CREATE ROLE me WITH PASSWORD 'mypassword' VALID UN-TIL '2020-12-31' CREATEDB LOGIN  
+CREATE ROLE me WITH PASSWORD 'mypassword' VALID UNTIL '2020-12-31' CREATEDB LOGIN  
+alter user me VALID UNTIL 'infinity';
+
+
+#### show user list
+postgres=# select * from pg_user;
+postgres=# select * from pg_shadow;
 
 
 #### file load  

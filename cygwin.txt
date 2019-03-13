@@ -9,4 +9,7 @@ C:\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico /usr/bin/zsh --login
 #run sshd
 ssh-host-config -y
 
+# when Error Unable to access jarfile
+# if use windows java, need to use windows path like
+java -jar c:\\cygwin64\\home\\me\\.embulk\\bin\\embulk example
 

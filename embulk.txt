@@ -1,0 +1,25 @@
+
+
+# install embulk on cygwin
+curl --create-dirs -o ~/.embulk/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar"
+chmod +x ~/.embulk/bin/embulk
+echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+
+# create sample project
+embulk example
+cd embulk-example/
+embulk guess seed.yml -o config.yml
+embulk preview config.yml
+embulk run config.yml
+
+
+# show current gem list
+embulk gem list
+
+
+# install plugins
+embulk gem install embulk-output-postgresql
+embulk gem install embulk-input-postgresql
+#embulk gem install to_csv
