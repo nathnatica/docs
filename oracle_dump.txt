@@ -37,7 +37,8 @@ impdp gdsjp_ut4_ora/gdsjp_ut4_ora remap_schema=gdsjp_ut3_ora:gdsjp_ut4_ora direc
 -----------------------------------------------
 
 
+■　EXECUTE SQL FILE
 sqlplus id/pass@localhost:1521/orcl.localdomain @file.sql
 
-
-
+■　SQL LOADER
+sqlldr <ID>/<PASS>@//<HOST>:<PORT>/<SERVICE_NAME> control=/path/to/control/file.ctl data=/path/to/data/csv/file.csv
