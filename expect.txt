@@ -1,0 +1,21 @@
+
+#!/usr/bin/expect -f
+spawn ssh HOSTNAME
+expect "login:" 
+send "username\r"
+expect "Password:"
+send "password\r"
+interact
+
+>
+Put it to /usr/bin/exp, then you can use:
+
+exp <password> ssh <anything>
+exp <password> scp <anysrc> <anydst>
+Done!
+>
+
+
+
+
+
