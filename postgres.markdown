@@ -75,3 +75,15 @@ prepare sel_sql (varchar, integer) as select $1 as code from table where key = $
 execute sel_sql('01', 1);  
 
 
+#### copy  
+##### load data from csv  
+###### input.sql  
+\copy table_name FROM 'path/to/csv/file' WITH CSV;  
+###### load command  
+psql -h <host> -p <port> -U <user> -d <database> -a -f ./input.sql  
+
+##### out table data to csv (wrap all element with double quote)  
+###### output.sql  
+\copy table_name TO 'path/to/csv/file' WITH CSV ENCODING 'SJIS' FORCE QUOTE *;  
+###### load command  
+psql -h <host> -p <port> -U <user> -d <database> -a -f ./output.sql  
