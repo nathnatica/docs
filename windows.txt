@@ -1,0 +1,7 @@
+
+
+windows 10
+spotlight background image location
+C:\Users\<user>\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_<something>\LocalState\Assets\
+
+
