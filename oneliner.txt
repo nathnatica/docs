@@ -167,6 +167,9 @@ cat -s ${file}
 autoload zmv # in ./.zshrc
 zmv -W '*' '*.jpg'
 
+# scp
+#local to remote
+scp -r ./file.txt tomcat@192.168.1.127:/var/tmp/
 
-
-
+# remote to local
+scp -r tomcat@192.168.1.127:/var/tmp/file ./

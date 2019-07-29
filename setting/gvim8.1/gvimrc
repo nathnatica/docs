@@ -1,0 +1,218 @@
+
+
+if has('gui_running')
+	set co=140
+	set lines=45
+else
+	set co=120
+	set lines=35
+endif
+
+set printencoding=utf-8
+
+set ignorecase
+set smartcase
+set nu
+set ruler
+set laststatus=2
+set statusline=%<%F%h%m%r%h%w%y%=col:%c%V\ ascii:%b\ pos:%o\ lin:%l\,%L\ %{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\"}%k[%{&ff}]\ %P
+
+syntax on
+set hlsearch
+let maplocalleader=','
+set autochdir " change current working directory when file opens
+set imi=1 " disable IME when quit insert mode (is it woking with baram?)
+set nobackup
+set noswapfile
+set nowritebackup
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+"= GUI Setting ========================================================================
+set guioptions-=T                               "Hide Toolbar
+set guioptions-=r                              "Hide VerticalSrollbar
+set guioptions+=h                               "Show HorizontalSrollbar
+set guioptions+=m                               "Hide Menubar
+set shortmess+=I                                "Hide Starting Intro Message
+set confirm                                     "File Write Confirm
+"set term=xterm-256color
+colorscheme peachpuff
+if has('mac')
+	set guifont=Monaco:h16
+else
+	"set encoding=japan  // parksungho 20120315
+
+
+"---------------------------------------------------------------------------
+" 日本語対応のための設定:
+"
+" ファイルを読込む時にトライするエンコーディングの順序を指定する。漢字コード
+" 自動判別機能を利用する場合には別途iconv.dllが必要。iconv.dllについては
+" README_j.txtを参照。オプション'encoding'はWindowsから取得できる情報を基
+" に、自動的にcp932(Windows)に設定される。UNIXでは設定されないこともあるらし
+" い。
+"
+" 日本語を扱うために必要
+"set encoding=japan	// parksungho 20120315
+" ファイルの漢字コード自動判別のために必要。(要iconv)
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがJISX0213に対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  let &fileencodings = &fileencodings .','. s:enc_jis
+  set fileencodings+=utf-8,ucs-2le,ucs-2
+  if &encoding =~# '^euc-\%(jp\|jisx0213\)$'
+    set fileencodings+=cp932
+    let &encoding = s:enc_euc
+  else
+    let &fileencodings = &fileencodings .','. s:enc_euc
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+" メッセージを日本語にする (Windowsでは自動的に判断・設定されている)
+if !has('win32') || $LANG == ''
+  let $LANG = 'ja'
+endif
+" 日本語入力用のkeymapが存在すれば読み込むが、起動時には無効にする
+if has('keymap') && !exists('g:keymap_japanese_disable')
+  if &keymap == ''
+    " ローマ字仮名のkeymap
+    silent! set keymap=japanese
+  endif
+  set iminsert=0 imsearch=0
+endif
+
+
+	"set fileencoding=japan // parksungho 20120315
+	set fileencoding=utf-8 
+	set guifont=Bitstream\ Vera\ Sans\ Mono:h11:cSHIFTJIS           "font setting <--- main font
+endif
+if has('gui_running')
+	colorscheme asmanian2
+else
+	colorscheme peachpuff
+endif
+
+"= Navigation Setting =================================================================
+" move the selected block up or down
+vmap <C-j> :m'>+<CR>gv=gv
+vmap <C-k> :m'<-2<CR>gv=gv
+
+" Key Binding for Tab {{{
+noremap <silent> th :tabprev<CR>
+noremap <silent> tl :tabnext<CR>
+noremap <silent> tn :tabnew<CR>
+noremap <silent> td :tabclose<CR>
+" }}}
+
+" .vimrc hotkey {{{
+set clipboard=unnamed
+vmap <C-v> <Esc>"+p
+imap <C-v> <Esc>"+p
+nmap <C-v> "+p
+vmap <C-c> <Esc>"+y
+imap <C-c> <Esc>"+y
+nmap <C-c> "+y
+" }}}
+
+nmap ; :
+nmap Q :q!<CR>
+
+nmap <CR> :NERDTreeToggle<CR>
+nmap <C-e> :set enc=utf8<CR>
+
+
+"= pathogen =====================================================================
+"execute pathogen#infect()
+"execute pathogen#infect('bundle/{}')
+
+
+
+"= Sample Setting =====================================================================
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=%USERPROFILE%/.vim/bundle/vundle/
+call vundle#rc()
+
+
+
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
+let g:fuf_modesDisable = [] " {{{
+nnoremap <silent> <LocalLeader>h :FufHelp<CR>
+nnoremap <silent> <LocalLeader>f  :FufFileWithCurrentBufferDir<CR>
+nnoremap <silent> <LocalLeader>r :FufFile \*\*\/<CR>
+nnoremap <silent> <LocalLeader>b  :FufBuffer<CR>
+"nnoremap <silent> <LocalLeader>4  :FufDirWithCurrentBufferDir<CR>
+"nnoremap <silent> <LocalLeader>$  :FufDir<CR>
+"nnoremap <silent> <LocalLeader>5  :FufChangeList<CR>
+nnoremap <silent> <LocalLeader>m  :FufMruFile<CR>
+"nnoremap <silent> <LocalLeader>7  :FufLine<CR>
+"nnoremap <silent> <LocalLeader>8  :FufBookmark<CR> 
+"nnoremap <silent> <LocalLeader>*  :FuzzyFinderAddBookmark<CR><CR>
+"nnoremap <silent> <LocalLeader>t  :FufTaggedFile<CR> 
+" check later parksungho
+" i need to tag files with $ctags -R --extra=+f . 
+" " }}}
+
+Bundle 'rails.vim'
+" non github repos
+Bundle 'git://git.wincent.com/command-t.git'
+
+
+
+
+"= Addtional Bundles ==================================================================
+Bundle 'Align'
+Bundle 'Markdown-syntax'
+Bundle 'closetag.vim'
+" Ctrl+- create matching close tag
+
+"Bundle 'minibufexplorerpp'
+"let g:miniBufExplMapWindowNavVim = 1  " Ctrl+[hjkl] to move
+
+Bundle 'bufexplorer.zip'
+nnoremap <silent><LocalLeader>e :BufExplorer<CR>
+" if want to open in a new tab press 't' or shift+enter
+
+" snippets textmate tab
+Bundle 'snipMate'
+Bundle 'AutoClose'
+Bundle 'ZoomWin'
+" <c-w>o to toggle current window zoom
+
+
+filetype plugin indent on     " required! 
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+"
+" NOTE: comments after Bundle command are not allowed..
+

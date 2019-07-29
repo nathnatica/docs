@@ -1,6 +1,7 @@
 
 connect with sys as sysdba
 
+su oracle
 sqlplus sys/pass@somedb as sysdba 
 less /opt/oracle/product/11.2/network/admin/tnsnames.ora
 
