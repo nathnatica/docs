@@ -1,10 +1,61 @@
-Class.forName("com.mysql.jdbc.Driver");
-url = "jdbc:mysql://localhost/testdb";
-
 
 
 create database testdb;
 
 use testdb;
 
-create table user (id INT, name VARHCAR(50));
+
+drop table item;
+create table item (code varchar(10), name varchar(100), primary key (code));
+
+
+
+drop table day;
+create table day (code varchar(10), no int, date int, start_price int, end_price int, high_price int, low_price int, volumn int, avg_5 int, avg_20 int, avg_120 int, constraint pk_day primary key (code, date));
+alter table day add index day_no(code, no);
+
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190801, 1000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190801);
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190802, 2000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190802);
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190803, 3000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190803);
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190804, 4000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190804);
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190805, 5000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190805);
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190806, 6000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190806);
+
+insert into day (code, no, date, end_price) 
+select * from (select '0001', (select ifnull(max(no),0)+1 from day where code = '0001'), 190807, 7000) as tmp 
+where not exists (select date from day where code = '0001' and date = 190807);
+
+
+--------------- avg_5
+
+update day as d1
+join (
+select code, round(avg(end_price)) as avg_5
+from day
+where code = '0001'
+and no between 1 and 5
+) d2 on d1.code = d2.code
+set d1.avg_5 = d2.avg_5
+where d1.no = 5;
+
+
+
+
