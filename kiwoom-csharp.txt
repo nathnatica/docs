@@ -184,6 +184,34 @@ https://dennisbot.tistory.com/16?category=637468
 
 130 + 130 = 260
 
+--------------------
 
+신규데이터부터 받으므로(최신 데이터는 미완료일수도...)
+array의 가장 뒤 부터 data를 등록하고 이미 등록된 레코드의 최신 버전은 갱신한다(미완료의 가능성이 있으므로)
+다시 array의 앞에서부터(갱신,등록) 이평 데이터를 계산해서 넣어준다.
 
+-------------------
 
+ Random rnd = new Random();
+ int month = rnd.Next(1, 13); // 1 - 12
+ int card = rnd.(52); // 0 - 51
+
+-------------------
+ 
+ string[] lines = File.ReadAllLines("C:\\input.txt");
+ foreach (string line in lines) {
+	string[] sp = line.Split(",");
+
+ }
+ 
+-------------------
+ 
+ String.IsNullOrEmpty();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
