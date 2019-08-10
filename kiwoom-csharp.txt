@@ -31,6 +31,8 @@ visual studio setting
  need to install module 
  and language pack(if needed)
  created at C:\Users\me\source\repos\
+ vsvim install
+ https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim
  
  add datasource
 	ServerExplorer > DataConnections > Add Connection
