@@ -6,7 +6,7 @@ use testdb;
 
 
 drop table item;
-create table item (code varchar(10), name varchar(100), target varchar(1), option varchar(1), primary key (code));
+create table item (code varchar(10), name varchar(100), target varchar(1), opt varchar(1), primary key (code));
 
 insert into item (code, name, target, option) 
 select * from (select '0001', 'xxxx', 'x', 'x') as tmp 
@@ -51,7 +51,7 @@ drop table evaluate;
 create table evaluate (seq int not null auto_increment, date varchar(10), test_condition varchar(300), check_total int, check_matched int, winning_rate numeric, primary key (seq));
 
 drop table evaluate_detail;
-create table_detail evaluate (seq int, code varchar(10), name(100), date varchar(10), buy_time int, sell_time int, buy_price int, sell_price int, profit_rate numeric, primary key (seq, code, date, buy_time));
+create table evaluate_detail (seq int, code varchar(10), name varchar(100), date varchar(10), buy_time int, sell_time int, buy_price int, sell_price int, profit_rate numeric, primary key (seq, code, date, buy_time));
 
 
 --------------- avg_5
